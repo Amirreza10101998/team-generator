@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Random Team Generator</h1>
+        <p>Welcome to the Random Team Generator! This tool allows you to quickly and easily divide a list of players into randomly-assigned teams. Simply input your list of player names, with each name on its own line, and the generator will do the rest. Whether you're organizing a sports tournament, a game night with friends, or a corporate team-building event, this generator has you covered.</p>
+
+        <div class="hero">
+            
+            <div class="hero-tings"><div class="hero-left">
+                <label>List</label>
+            </div>
+
+            <div class="hero-right">
+                <textarea placeholder="Example data:
+John
+Alex
+Amy
+Olivia
+Mark"></textarea>
+            </div>
+        </div>
+
+            <div class="hero-teams">
+                <div class="hero-teams-left">
+                    <label>Number of Teams</label>
+                </div>
+
+                <div class="hero-teams-right">
+                    <input type="number" placeholder="2" value="2" min="2" max="100">
+                </div>
+            </div>
+
+            <div class="generate-btn">
+                <button class="btn">Generate Random Teams</button>
+            </div>
+        </div>
+
+        <div class="team-container">
+            <div class="random-teams">Random Teams</div>
+
+            <div class="generated-teams">
+                <div class="generated-left"></div>
+                <div class="generated-right"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const generateTeams = () => {
+  // Get the list of player names and the number of teams from the form
+  const players = document.querySelector("textarea").value.split("\n");
+  const numTeams = document.querySelector("input[type='number']").value;
+
+  // Validate the input
+  if (players.length < numTeams) {
+    alert("Error: Number of teams must be less than or equal to the number of players.");
+    return;
+  }
+
+  // Shuffle the players array
+  for (let i = players.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [players[i], players[j]] = [players[j], players[i]];
+  }
+
+  // Divide the shuffled players into teams
+  const teams = [];
+  for (let i = 0; i < numTeams; i++) {
+    teams.push(players.slice(i * players.length / numTeams, (i + 1) * players.length / numTeams));
+  }
+
+  // Display the teams
+  const teamContainer = document.querySelector(".team-container");
+  teamContainer.innerHTML = "";
+  for (let i = 0; i < numTeams; i++) {
+    const teamDiv = document.createElement("div");
+    teamDiv.classList.add("generated-teams");
+    teamDiv.innerHTML = `
+      <div class="generated-left">Team ${i + 1}</div>
+      <div class="generated-right">${teams[i].join(", ")}</div>
+    `;
+    teamContainer.appendChild(teamDiv);
+  }
+};
+
+document.querySelector(".btn").addEventListener("click", generateTeams);
+
+
+    </script>
+
+</body>
+</html>
