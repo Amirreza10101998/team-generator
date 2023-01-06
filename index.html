@@ -85,24 +85,23 @@ Tom"></textarea>
         
                 body.style.background = "#000000";
                 body.style.color = "white";
-                body.style.transition = '0.5s'
-
-                for (let i = 0; i < document.querySelectorAll('.btn').length; i++) {
-                    document.querySelectorAll('.btn')[i].style.backgroundColor = '#ea80fc';
-                    document.querySelectorAll('.btn')[i].style.transition = '0.5s';   
-                }
-
-                for (let i = 0; i < document.querySelectorAll('.generated').length; i++) {
-                    document.querySelectorAll('.generated')[i].style.backgroundColor = '#ea80fc';
-                    document.querySelectorAll('.generated')[i].style.transition = '0.5s';   
-                }
+                body.style.transition = '0.3s'
 
                 for (let i = 0; i < document.querySelectorAll('.hero-left, .hero-right').length; i++) {
                     document.querySelectorAll('.hero-left, .hero-right')[i].style.backgroundColor = '#1f1f1f'
                     document.querySelectorAll('.hero-left, .hero-right')[i].style.border = '1px solid black'
                     document.querySelectorAll('.hero-left, .hero-right')[i].style.boxShadow = 'none'
-                    document.querySelectorAll('.hero-left, .hero-right')[i].style.transition = '0.5s'   
+                    document.querySelectorAll('.hero-left, .hero-right')[i].style.transition = '0.3s'   
                 }
+
+                for (let i = 0; i < document.querySelectorAll('.btn').length; i++) {
+                    document.querySelectorAll('.btn')[i].style.backgroundColor = 'black'
+                    document.querySelectorAll('.btn')[i].style.color = '#03DAC5'
+                    document.querySelectorAll('.btn')[i].style.border = 'solid #03DAC5'
+                    document.querySelectorAll('.btn')[i].style.transition = '0.3s'   
+                }
+
+
 
                 for (let i = 0; i < document.getElementsByTagName('textarea').length; i++) {
                     document.getElementsByTagName('textarea')[i].style.backgroundColor = '#363636';
@@ -115,23 +114,20 @@ Tom"></textarea>
             } else {
                 body.style.backgroundColor = 'white';
                 body.style.color = 'black'
-                body.style.transition = '0.5s'
-
-                for (let i = 0; i < document.querySelectorAll('.btn').length; i++) {
-                    document.querySelectorAll('.btn')[i].style.backgroundColor = 'rgb(98, 0, 238)';
-                    document.querySelectorAll('.btn')[i].style.transition = '0.5s';  
-                }
+                body.style.transition = '0.3s'
 
                 for (let i = 0; i < document.querySelectorAll('.hero-left, .hero-right').length; i++) {
                     document.querySelectorAll('.hero-left, .hero-right')[i].style.backgroundColor = 'white'
                     document.querySelectorAll('.hero-left, .hero-right')[i].style.border = '1px solid rgb(237, 237, 237)'
                     document.querySelectorAll('.hero-left, .hero-right')[i].style.boxShadow = '1px 3px 10px rgb(194, 194, 194)'
-                    document.querySelectorAll('.hero-left, .hero-right')[i].style.transition = '0.5s'
+                    document.querySelectorAll('.hero-left, .hero-right')[i].style.transition = '0.3s'
                 }
 
-                for (let i = 0; i < document.querySelectorAll('.generated').length; i++) {
-                    document.querySelectorAll('.generated')[i].style.backgroundColor = 'rgb(98, 0, 238)';
-                    document.querySelectorAll('.generated')[i].style.transition = '0.5s';   
+                for (let i = 0; i < document.querySelectorAll('.btn').length; i++) {
+                    document.querySelectorAll('.btn')[i].style.backgroundColor = '#03DAC5'
+                    document.querySelectorAll('.btn')[i].style.color = 'white'
+                    document.querySelectorAll('.btn')[i].style.border = 'none'
+                    document.querySelectorAll('.btn')[i].style.transition = '0.3s'   
                 }
 
                 for (let i = 0; i < document.getElementsByTagName('textarea').length; i++) {
@@ -168,7 +164,7 @@ Tom"></textarea>
     teams.push(players.slice(i * players.length / numTeams, (i + 1) * players.length / numTeams));
   }
 
-  // Display the teams
+     // Display the teams
   const teamContainer = document.querySelector(".team-container");
   teamContainer.innerHTML = "";
   for (let i = 0; i < numTeams; i++) {
@@ -177,12 +173,10 @@ Tom"></textarea>
     teamDiv.innerHTML = `
       <div class="generated">Team ${i + 1}: ${teams[i].join(", ")}</div>
     `;
-
-
-
     teamContainer.appendChild(teamDiv);
   } 
-};
+}
+
 
 function reset() {
     document.getElementById("team").innerHTML = ""
